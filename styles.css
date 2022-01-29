@@ -1,0 +1,136 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg)
+    50% / cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover,
+#btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body,
+section,
+button {
+  display: grid;
+}
+
+body {
+  grid-gap: 3em;
+  margin: 0;
+  height: 100vh;
+  --featured-img: linear-gradient(180deg, rgb(0, 17, 255), #860000);
+  --bg-blend-mode: overlay;
+  background-color: #262626;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(
+      50% 50% at top center,
+      rgb(0, 58, 53),
+      #000000
+    ),
+    var(--featured-img);
+  background-size: 120% 2000px, 100% 2000px;
+  min-height: 100%;
+  font: 900 0.75em ubuntu, sans-serif;
+}
+
+section {
+  grid-gap: 2em 0.75em;
+  grid-template-columns: repeat(auto-fit, 12em);
+  place-content: center;
+}
+
+h3 {
+  grid-column: 1/-1;
+  color: #eee;
+  font: 2rem/1.25em z003, segoe scrpt, comic sans ms, cursive;
+  text-align: center;
+}
+
+button {
+  --full: linear-gradient(red 0 0);
+  --grad: linear-gradient(to right bottom, var(--slist));
+  grid-gap: 0.5em;
+  grid-auto-flow: column;
+  place-self: center;
+  border: solid 0.25em transparent;
+  padding: 1em 1.5em;
+  border-radius: 9em;
+  background: var(--grad) border-box;
+  -webkit-text-fill-color: transparent;
+  font: inherit;
+  text-transform: uppercase;
+}
+:nth-child(1) > button {
+  -webkit-mask: var(--full) text, var(--full) padding-box, var(--full);
+  -webkit-mask-composite: xor;
+}
+:nth-child(2) > button {
+  position: relative;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+:nth-child(2) > button::before {
+  position: absolute;
+  inset: -0.25em;
+  border: inherit;
+  border-radius: inherit;
+  background: inherit;
+  background-clip: border-box;
+  -webkit-mask: var(--full) padding-box, var(--full);
+  -webkit-mask-composite: xor;
+  mask: var(--full) padding-box exclude, var(--full);
+  content: "";
+}
+:nth-child(3) > button {
+  border-image: var(--grad) 1;
+  -webkit-background-clip: text;
+  background-clip: text;
+  clip-path: inset(0 round 0.25em);
+}
+button::after {
+  content: attr(data-ico);
+}
